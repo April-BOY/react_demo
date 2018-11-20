@@ -1,34 +1,21 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import {createStore} from 'redux'
+import {counter,addGun,removeGun} from './index.redux.js'
+import App from './App'
 
-
-function BollingVerdict(props){
-    if(props.celsius>=100){
-        return <p>水会烧开</p>
-    }else{
-        return <p>水不会烧开</p>
-    }
+/**
+* * 配置使用 redux 插件调试的参数：  
+* * window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+* *
+* *
+*/
+const store = createStore(counter,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+function render(){
+    ReactDom.render(<App
+        store={store} addGun={addGun} removeGun={removeGun}
+    ></App>,document.getElementById('root'));
 }
+store.subscribe(render);
 
-
-class Calculator extends React.Component{
-    constructor(){
-        super();
-        this.state = {temperature:""};
-        this.changeHandle = this.changeHandle.bind(this);
-    }
-    changeHandle(){
-        
-    }
-    render(){
-        const temperature = this.state.temperature;
-        return (
-            <fieldset>
-                <legend>输入一个摄氏温度</legend>
-                <input type="text" value={temperature} onChange={this.changeHandle} />
-            </fieldset>
-        )
-    }
-}
-
-ReactDom.render(<Calculator/>,document.getElementById('root'));
+render();
