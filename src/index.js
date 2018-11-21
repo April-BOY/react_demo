@@ -4,6 +4,8 @@ import ReactDom from 'react-dom'
 import {createStore} from 'redux'
 import {counter,addGun,removeGun} from './index.redux.js'
 import App from './App'
+import {BrowserRouter,Route,Link} from 'react-router-dom'
+
 
 // index.js 文件的作用是
 // 1.渲染最大的组件
