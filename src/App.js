@@ -15,7 +15,6 @@ import {addGun,removeGun,addGunSync} from './index.redux'
 /**
 * * @connect ES6是装饰器的语法
 * ! 注意：@connect和组件之间不能有空行，两者中间也不能写其他的内容
-* *
 */
 @connect(
   (state)=>{
@@ -25,6 +24,11 @@ import {addGun,removeGun,addGunSync} from './index.redux'
   },{addGun,removeGun,addGunSync}
 )
 class App extends Component {
+/**
+* ! 使用import React, { Component } from 'react';这种导入方式，
+* ! 这里就可以直接使用导出的Component，而且，在constructor()方法中
+* ! 也不需要写super()方法指向父类的构造函数来构造当前组件
+*/
   render() {
     return (
       <div>
