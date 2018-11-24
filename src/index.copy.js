@@ -36,6 +36,7 @@ function render(){
 //! 下面代码的含义是:当 store的数据发生变化时，重新渲染组件App 
 store.subscribe(render);
 
+// 这样写结构不好看，因此，将其抽出来写成一个函数render()
 // store.subscribe(function(){
 //     ReactDom.render(<App
 //         store={store} addGun={addGun} removeGun={removeGun}
